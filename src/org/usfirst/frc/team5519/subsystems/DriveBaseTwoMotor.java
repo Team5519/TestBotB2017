@@ -19,10 +19,16 @@ public class DriveBaseTwoMotor {
 	 */
 	public DriveBaseTwoMotor() {
 		
+		// GSN - 11/12/2016
 	    frontLeftMotor = new Talon(1);		// Need to find and set correct port
+	    // frontLeftMotor.setSafetyEnabled(true);	// Safety enabled by default
+	    // frontLeftMotor.setExpiration(0.1);	// Safety timer set by default
 	    frontRightMotor = new Talon(2);		// Need to find and set correct port
+	    // frontRightMotor.setSafetyEnabled(true);	// Safety enabled by default
+	    // frontRightMotor.setExpiration(0.1);	// Safety timer set by default
         myDrive = new RobotDrive(frontLeftMotor, frontRightMotor);	// NOTE: left - Right order
-        myDrive.setExpiration(0.1);			// We need to sus out robot safety
+        myDrive.setSafetyEnabled(true); 	// Ensure motor safety
+        myDrive.setExpiration(0.1);			// Suggested default safety timeout
         
 	}
 
@@ -35,11 +41,13 @@ public class DriveBaseTwoMotor {
 	 * 
 	 */
 	public DriveBaseTwoMotor(int leftMotorChannel, int rightMotorChannel) {
-		
+
+		// GSN - 11/12/2016
 	    frontLeftMotor = new Talon(leftMotorChannel);
 	    frontRightMotor = new Talon(rightMotorChannel);
         myDrive = new RobotDrive(frontLeftMotor, frontRightMotor);	// NOTE: left - Right order
-        myDrive.setExpiration(0.1);			// We need to sus out robot safety
+        myDrive.setSafetyEnabled(true); 	// Ensure motor safety
+        myDrive.setExpiration(0.1);			// Suggested default safety timeout
         
 	}
 	

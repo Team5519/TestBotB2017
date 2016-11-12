@@ -86,8 +86,6 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	
     	// GSN - 11/12/2016
-    	// driveBase.setSafetyEnabled(true);	// Need to sus out robot safety
-    	//myDrive.arcadeDrive(driveStick); // drive with arcade style (use right stick)
     	// driveBase.Drive(driveStick);
     	
     	// teleopPeriodic is called every 20 ms so a count of 100 is about 2 seconds
