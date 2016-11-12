@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot {
 	 */
     DriveBaseTwoMotor driveBase;
     Joystick driveStick;
+    int driveCount;
 
 	
     /**
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
         // GSN - 11/12/2016
         driveBase = new DriveBaseTwoMotor();
         driveStick = new Joystick(0);		// Need to find and set correct joy stick port
+        driveCount = 0;
 
     }
     
@@ -86,7 +88,32 @@ public class Robot extends IterativeRobot {
     	// GSN - 11/12/2016
     	// driveBase.setSafetyEnabled(true);	// Need to sus out robot safety
     	//myDrive.arcadeDrive(driveStick); // drive with arcade style (use right stick)
-    	driveBase.Drive(driveStick);
+    	// driveBase.Drive(driveStick);
+    	
+    	// teleopPeriodic is called every 20 ms so a count of 100 is about 2 seconds
+    	driveCount++;
+    	if (driveCount <= 100) {
+    		// Go Forward Slowly for 2 seconds
+    		driveBase.Drive(0.4,0);
+    	} else if (driveCount <= 200) {
+       		// Go Forward Fast for 2 seconds
+    		driveBase.Drive(0.8,0);
+    	} else if (driveCount <= 250) {
+      		// Stop for 1 second
+    		driveBase.Drive(0,0);
+    	} else if (driveCount <= 350) {
+       		// Go Backward Slowly for 2 seconds
+    		driveBase.Drive(-0.4,0);
+    	} else if (driveCount <= 450) {
+       		// Go Backward Fast for 2 seconds
+    		driveBase.Drive(-0.8,0);
+    	} else if (driveCount <= 500) {
+      		// Stop for 1 second
+    		driveBase.Drive(0,0);
+    	} else {
+    		// Reset loop
+    		driveCount = 0;
+    	}
         
     }
     

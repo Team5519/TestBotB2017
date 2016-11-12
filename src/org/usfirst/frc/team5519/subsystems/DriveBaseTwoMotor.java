@@ -53,5 +53,13 @@ public class DriveBaseTwoMotor {
 		myDrive.arcadeDrive(stick, true);
 	}
 
-
+	/** GSN - 11/12/2016
+	 * 
+	 * Drive using direct values. 
+	 * Code stolen from RobotDrive
+	 * 
+	 */
+	 public void Drive(double moveValue, double rotateValue) {
+		 myDrive.arcadeDrive(moveValue, rotateValue);
+	 }
 }
