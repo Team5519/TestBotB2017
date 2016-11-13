@@ -1,10 +1,13 @@
-package org.usfirst.frc.team5519.subsystems;
+package org.usfirst.frc.team5519.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 
-public class DriveBaseTwoMotor {
+public class DriveBaseTwoMotor extends DriveBase {
+	
+	final int kFrontLeftMotorPort = 1;		// Need to find and set correct port
+	final int kFrontRightMotorPort = 2;		// Need to find and set correct port
 	
 	protected Talon frontLeftMotor, frontRightMotor;
 	protected RobotDrive myDrive;
@@ -20,10 +23,10 @@ public class DriveBaseTwoMotor {
 	public DriveBaseTwoMotor() {
 		
 		// GSN - 11/12/2016
-	    frontLeftMotor = new Talon(1);		// Need to find and set correct port
+	    frontLeftMotor = new Talon(kFrontLeftMotorPort);	
 	    // frontLeftMotor.setSafetyEnabled(true);	// Safety enabled by default
 	    // frontLeftMotor.setExpiration(0.1);	// Safety timer set by default
-	    frontRightMotor = new Talon(2);		// Need to find and set correct port
+	    frontRightMotor = new Talon(kFrontRightMotorPort);	
 	    // frontRightMotor.setSafetyEnabled(true);	// Safety enabled by default
 	    // frontRightMotor.setExpiration(0.1);	// Safety timer set by default
         myDrive = new RobotDrive(frontLeftMotor, frontRightMotor);	// NOTE: left - Right order

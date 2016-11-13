@@ -1,8 +1,6 @@
 
 package org.usfirst.frc.team5519.robot;
 
-import org.usfirst.frc.team5519.subsystems.DriveBaseTwoMotor;
-
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
@@ -27,8 +25,11 @@ public class Robot extends IterativeRobot {
 	 * Addition of basic drive capabilities using an abstracted driveBase.  
 	 * The intent is is to allow development of more sophisticated drive bases  
 	 * with minimal impact on the main robot code.
+	 * 
+	 * Same goes for operator station and joystick setup/
 	 */
-    DriveBaseTwoMotor driveBase;
+    DriveBase driveBase;
+    TeleopStation teleopStation;
     Joystick driveStick;
     int driveCount;
 
@@ -45,7 +46,8 @@ public class Robot extends IterativeRobot {
     	
         // GSN - 11/12/2016
         driveBase = new DriveBaseTwoMotor();
-        driveStick = new Joystick(0);		// Need to find and set correct joy stick port
+        teleopStation = new TeleopStationOneStick();
+        driveStick = teleopStation.getDriveStick();
         driveCount = 0;
 
     }
@@ -82,6 +84,8 @@ public class Robot extends IterativeRobot {
 
     /**
      * This function is called periodically during operator control
+     * 
+     * GSN - Periodically means about 50 times a second (or once every 20 ms or 0.020 s)
      */
     public void teleopPeriodic() {
     	
