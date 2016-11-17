@@ -90,10 +90,11 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	
     	// GSN - 11/12/2016
-    	// driveBase.Drive(driveStick);
+    	driveBase.Drive(driveStick);
     	
     	// teleopPeriodic is called every 20 ms so a count of 100 is about 2 seconds
     	driveCount++;
+    	driveCount = 10000;
     	if (driveCount <= 100) {
     		// Go Forward Slowly for 2 seconds
     		driveBase.Drive(0.4,0);
@@ -116,7 +117,7 @@ public class Robot extends IterativeRobot {
     		// Reset loop
     		driveCount = 0;
     	}
-        
+ 
     }
     
     /**

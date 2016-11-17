@@ -3,13 +3,14 @@ package org.usfirst.frc.team5519.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.TalonSRX;
 
 public class DriveBaseTwoMotor extends DriveBase {
 	
-	final int kFrontLeftMotorPort = 1;		// Need to find and set correct port
+	final int kFrontLeftMotorPort = 5;		// Need to find and set correct port
 	final int kFrontRightMotorPort = 2;		// Need to find and set correct port
 	
-	protected Talon frontLeftMotor, frontRightMotor;
+	protected TalonSRX frontLeftMotor, frontRightMotor;
 	protected RobotDrive myDrive;
 	
 	/** GSN - 11/12/2016
@@ -23,10 +24,10 @@ public class DriveBaseTwoMotor extends DriveBase {
 	public DriveBaseTwoMotor() {
 		
 		// GSN - 11/12/2016
-	    frontLeftMotor = new Talon(kFrontLeftMotorPort);	
+	    frontLeftMotor = new TalonSRX(kFrontLeftMotorPort);	
 	    // frontLeftMotor.setSafetyEnabled(true);	// Safety enabled by default
 	    // frontLeftMotor.setExpiration(0.1);	// Safety timer set by default
-	    frontRightMotor = new Talon(kFrontRightMotorPort);	
+	    frontRightMotor = new TalonSRX(kFrontRightMotorPort);	
 	    // frontRightMotor.setSafetyEnabled(true);	// Safety enabled by default
 	    // frontRightMotor.setExpiration(0.1);	// Safety timer set by default
         myDrive = new RobotDrive(frontLeftMotor, frontRightMotor);	// NOTE: left - Right order
@@ -46,8 +47,8 @@ public class DriveBaseTwoMotor extends DriveBase {
 	public DriveBaseTwoMotor(int leftMotorChannel, int rightMotorChannel) {
 
 		// GSN - 11/12/2016
-	    frontLeftMotor = new Talon(leftMotorChannel);
-	    frontRightMotor = new Talon(rightMotorChannel);
+	    frontLeftMotor = new TalonSRX(leftMotorChannel);
+	    frontRightMotor = new TalonSRX(rightMotorChannel);
         myDrive = new RobotDrive(frontLeftMotor, frontRightMotor);	// NOTE: left - Right order
         myDrive.setSafetyEnabled(true); 	// Ensure motor safety
         myDrive.setExpiration(0.1);			// Suggested default safety timeout
