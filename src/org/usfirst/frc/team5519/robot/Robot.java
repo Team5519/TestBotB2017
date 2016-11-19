@@ -1,6 +1,8 @@
 
 package org.usfirst.frc.team5519.robot;
 
+import org.usfirst.frc.team5519.subsystems.SimpleArm;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
@@ -20,14 +22,15 @@ public class Robot extends IterativeRobot {
     String autoSelected;
     SendableChooser chooser;
     
-	/**  GSN - 11/12/2016
-	 * 
-	 * Addition of basic drive capabilities using an abstracted driveBase.  
-	 * The intent is is to allow development of more sophisticated drive bases  
-	 * with minimal impact on the main robot code.
-	 * 
-	 * Same goes for operator station and joystick setup/
-	 */
+	//  GSN - 11/12/2016
+	// 
+	// Addition of basic drive capabilities using an abstracted driveBase.  
+	// The intent is is to allow development of more sophisticated drive bases  
+	// with minimal impact on the main robot code.
+	// 
+	// Same goes for operator station and joystick setup/
+	//
+    public static SimpleArm arm = new SimpleArm();
     DriveBase driveBase;
     TeleopStation teleopStation;
     Joystick driveStick;
@@ -45,6 +48,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto choices", chooser);
     	
         // GSN - 11/12/2016
+        // OI oi = new OI();
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
         driveStick = teleopStation.getDriveStick();
