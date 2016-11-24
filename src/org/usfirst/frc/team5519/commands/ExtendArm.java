@@ -19,14 +19,13 @@ public class ExtendArm extends Command {
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Robot.arm.extend();
-
+		// Robot.arm.extend();
 	}
 
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-
+		Robot.arm.extend();
 	}
 
 	@Override

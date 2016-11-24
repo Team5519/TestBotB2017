@@ -23,10 +23,10 @@ public class OI {
 	
 	public static final int kDriveStickPort = 0;	// Need to find and set correct joy stick port
 	
-	public static Joystick driveStick = new Joystick(kDriveStickPort);
-	public static Button driveStickButton1 = new JoystickButton(driveStick,1);
-	public static Button driveStickButton2 = new JoystickButton(driveStick,2);
-	public static Button driveStickButton3 = new JoystickButton(driveStick,3);
+	public static Joystick driveStick;
+	public static Button driveStickButton1;
+	public static Button driveStickButton2;
+	public static Button driveStickButton3;
 
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
@@ -48,12 +48,17 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	
-	static {
+	public OI() {
+		OI.driveStick = new Joystick(kDriveStickPort);
+		
 		Command extendArm = new ExtendArm();
 		Command retractArm = new RetractArm();
 		
-		driveStickButton1.whenPressed(extendArm);
-		driveStickButton2.cancelWhenPressed(extendArm);
+		OI.driveStickButton1 = new JoystickButton(OI.driveStick,7);
+		OI.driveStickButton1.whenPressed(extendArm);
+		OI.driveStickButton2 = new JoystickButton(OI.driveStick,9);
+		OI.driveStickButton2.cancelWhenPressed(extendArm);
+		driveStickButton3 = new JoystickButton(OI.driveStick,11);
 		driveStickButton3.toggleWhenPressed(retractArm);
 	}
 

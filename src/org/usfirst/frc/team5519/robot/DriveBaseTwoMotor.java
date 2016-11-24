@@ -20,7 +20,8 @@ public class DriveBaseTwoMotor extends DriveBase {
 	 */
 	public DriveBaseTwoMotor() {
 		// GSN - 11/12/2016
-        myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.frontRightMotor);	// NOTE: left - Right order
+        //myDrive = new RobotDrive(RobotMap.frontLeftMotor, RobotMap.frontRightMotor);	// NOTE: left - Right order
+        myDrive = new RobotDrive(RobotMap.armMotor, RobotMap.frontRightMotor);
         myDrive.setSafetyEnabled(true); 	// Ensure motor safety
         myDrive.setExpiration(0.1);			// Suggested default safety timeout
         

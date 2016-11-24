@@ -13,13 +13,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class SimpleArm extends Subsystem {
 
-	private static SpeedController motor = RobotMap.armMotor;
+	//private static SpeedController motor;
 	private static Counter outerLimitCounter;
 	private static Counter innerLimitCounter;
 	
 	
 	@Override
 	protected void initDefaultCommand() {
+	}
+
+	public void initHardware() {
+		/*
+		if (motor == null) {
+			motor = RobotMap.armMotor;
+		}
     	if (outerLimitCounter == null) {
     		outerLimitCounter = new Counter(RobotMap.outerArmLimitSwitch);
     	}
@@ -28,6 +35,7 @@ public class SimpleArm extends Subsystem {
     	}
    	    outerLimitCounter.reset();
     	innerLimitCounter.reset();
+    	*/
 	}
 
     /** 
@@ -41,11 +49,14 @@ public class SimpleArm extends Subsystem {
      * @author GSN 11/19/2016
      */
 	public boolean isOuterLimitHit() {
+		/*
     	if (outerLimitCounter != null) {
     		return outerLimitCounter.get() > 0;
     	} else {
     		return true;
     	}
+    	*/
+		return false;
     }
 
     /** 
@@ -59,11 +70,14 @@ public class SimpleArm extends Subsystem {
      * @author GSN 11/19/2016
      */
     public boolean isInnerLimitHit() {
+    	/*
     	if (innerLimitCounter != null) {
     		return innerLimitCounter.get() > 0;
     	} else {
     		return true;
     	}
+    	*/
+    	return false;
     }
 
     /**
@@ -75,10 +89,12 @@ public class SimpleArm extends Subsystem {
      * 
      */
     private void resetOuterLimit() {
+    	/*
     	if (outerLimitCounter == null) {
     		outerLimitCounter = new Counter(RobotMap.outerArmLimitSwitch);
     	}
    	    outerLimitCounter.reset();
+   	    */
     }
 
     /**
@@ -90,10 +106,12 @@ public class SimpleArm extends Subsystem {
      * 
      */
     private void resetInnerLimit() {
+    	/*
     	if (innerLimitCounter == null) {
     		innerLimitCounter = new Counter(RobotMap.innerArmLimitSwitch);
     	}
     	innerLimitCounter.reset();
+    	*/
     }
 
     /**
@@ -103,7 +121,7 @@ public class SimpleArm extends Subsystem {
      * @author GSN 11/19/2016
 	 */
 	public void extend() {
-		motor.set(0.5);
+		RobotMap.armMotor.set(0.5);
 		this.resetInnerLimit();
 	}
 	
@@ -114,7 +132,7 @@ public class SimpleArm extends Subsystem {
      * @author GSN 11/19/2016
 	 */
 	public void retract() {
-		motor.set(-0.5);
+		RobotMap.armMotor.set(-0.5);
 		this.resetOuterLimit();
 	}
 
@@ -125,7 +143,7 @@ public class SimpleArm extends Subsystem {
      * @author GSN 11/19/2016
 	 */
 	public void stop() {
-		motor.set(0.0);
+		RobotMap.armMotor.set(0.0);
 	}
 
 }

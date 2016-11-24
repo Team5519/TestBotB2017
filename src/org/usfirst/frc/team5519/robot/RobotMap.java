@@ -22,20 +22,28 @@ public class RobotMap {
 	
 	// GSN 11/18/2016
 	// Output ports and controllers.
-	public static final int kFrontLeftMotorPort = 5;		// Need to find and set correct port
-	public static final int kFrontRightMotorPort = 2;		// Need to find and set correct port
-	public static final int kArmMotorPort = 5;		// Need to find and set correct port
+	public static final int kFrontLeftMotorPort = 1;	// Need to find and set correct port
+	public static final int kFrontRightMotorPort = 2;	// Need to find and set correct port
+	public static final int kArmMotorPort = 5;			// Need to find and set correct port
 	
-	public static Victor frontLeftMotor = new Victor(kFrontLeftMotorPort);
-	public static Victor frontRightMotor = new Victor(kFrontRightMotorPort);
-	public static Victor armMotor = new Victor(kArmMotorPort);
+	public static Victor frontLeftMotor;
+	public static Victor frontRightMotor;
+	public static Victor armMotor;
 	
 	// GSN 11/18/2016
 	// Input ports and sensors.
 	public static final int kOuterArmLimitPort = 1;		// Need to find and set correct port
 	public static final int kInnerArmLimitPort = 2;		// Need to find and set correct port
 
-	public static DigitalInput outerArmLimitSwitch = new DigitalInput(kOuterArmLimitPort);
-	public static DigitalInput innerArmLimitSwitch = new DigitalInput(kInnerArmLimitPort);
-
+	public static DigitalInput outerArmLimitSwitch;
+	public static DigitalInput innerArmLimitSwitch;
+	
+	static void init() {
+		frontLeftMotor = new Victor(kFrontLeftMotorPort);
+		frontRightMotor = new Victor(kFrontRightMotorPort);
+		armMotor = new Victor(kArmMotorPort);
+		
+		outerArmLimitSwitch = new DigitalInput(kOuterArmLimitPort);
+		innerArmLimitSwitch = new DigitalInput(kInnerArmLimitPort);
+	}
 }

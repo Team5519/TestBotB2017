@@ -6,6 +6,7 @@ import org.usfirst.frc.team5519.subsystems.SimpleArm;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -30,11 +31,12 @@ public class Robot extends IterativeRobot {
 	// 
 	// Same goes for operator station and joystick setup/
 	//
-    public static SimpleArm arm = new SimpleArm();
-    DriveBase driveBase;
-    TeleopStation teleopStation;
-    Joystick driveStick;
-    int driveCount;
+    public static OI oi;    
+    public static SimpleArm arm;
+    public static DriveBase driveBase;
+    public static TeleopStation teleopStation;
+    //public static Joystick driveStick;
+    private int driveCount;
 
 	
     /**
@@ -42,18 +44,24 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+        // GSN - 11/12/2016
+        RobotMap.init();
+        
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", defaultAuto);
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
     	
         // GSN - 11/12/2016
-        // OI oi = new OI();
+        arm = new SimpleArm();
+
+        oi = new OI();
+        
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
-        driveStick = teleopStation.getDriveStick();
+        //driveStick = teleopStation.getDriveStick();
         driveCount = 0;
-
+        
     }
     
 	/**
@@ -94,34 +102,10 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	
     	// GSN - 11/12/2016
-    	driveBase.Drive(driveStick);
+    	driveBase.Drive(OI.driveStick);
     	
-    	// teleopPeriodic is called every 20 ms so a count of 100 is about 2 seconds
-    	driveCount++;
-    	driveCount = 10000;
-    	if (driveCount <= 100) {
-    		// Go Forward Slowly for 2 seconds
-    		driveBase.Drive(0.4,0);
-    	} else if (driveCount <= 200) {
-       		// Go Forward Fast for 2 seconds
-    		driveBase.Drive(0.8,0);
-    	} else if (driveCount <= 250) {
-      		// Stop for 1 second
-    		driveBase.Drive(0,0);
-    	} else if (driveCount <= 350) {
-       		// Go Backward Slowly for 2 seconds
-    		driveBase.Drive(-0.4,0);
-    	} else if (driveCount <= 450) {
-       		// Go Backward Fast for 2 seconds
-    		driveBase.Drive(-0.8,0);
-    	} else if (driveCount <= 500) {
-      		// Stop for 1 second
-    		driveBase.Drive(0,0);
-    	} else {
-    		// Reset loop
-    		driveCount = 0;
-    	}
- 
+    	Scheduler.getInstance().run();
+    	
     }
     
     /**
