@@ -27,6 +27,7 @@ public class SimpleArm extends Subsystem {
 		if (motor == null) {
 			motor = RobotMap.armMotor;
 		}
+		*/
     	if (outerLimitCounter == null) {
     		outerLimitCounter = new Counter(RobotMap.outerArmLimitSwitch);
     	}
@@ -35,7 +36,7 @@ public class SimpleArm extends Subsystem {
     	}
    	    outerLimitCounter.reset();
     	innerLimitCounter.reset();
-    	*/
+    	
 	}
 
     /** 
@@ -49,14 +50,13 @@ public class SimpleArm extends Subsystem {
      * @author GSN 11/19/2016
      */
 	public boolean isOuterLimitHit() {
-		/*
+		
     	if (outerLimitCounter != null) {
     		return outerLimitCounter.get() > 0;
     	} else {
     		return true;
     	}
-    	*/
-		return false;
+
     }
 
     /** 
@@ -70,14 +70,13 @@ public class SimpleArm extends Subsystem {
      * @author GSN 11/19/2016
      */
     public boolean isInnerLimitHit() {
-    	/*
+    	
     	if (innerLimitCounter != null) {
     		return innerLimitCounter.get() > 0;
     	} else {
     		return true;
     	}
-    	*/
-    	return false;
+    	
     }
 
     /**
@@ -89,12 +88,12 @@ public class SimpleArm extends Subsystem {
      * 
      */
     private void resetOuterLimit() {
-    	/*
+    	
     	if (outerLimitCounter == null) {
     		outerLimitCounter = new Counter(RobotMap.outerArmLimitSwitch);
     	}
    	    outerLimitCounter.reset();
-   	    */
+   	   
     }
 
     /**
@@ -106,12 +105,12 @@ public class SimpleArm extends Subsystem {
      * 
      */
     private void resetInnerLimit() {
-    	/*
+    	
     	if (innerLimitCounter == null) {
     		innerLimitCounter = new Counter(RobotMap.innerArmLimitSwitch);
     	}
     	innerLimitCounter.reset();
-    	*/
+    	
     }
 
     /**

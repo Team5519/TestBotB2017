@@ -22,11 +22,19 @@ public class OI {
     // Button button = new JoystickButton(stick, buttonNumber);
 	
 	public static final int kDriveStickPort = 0;	// Need to find and set correct joy stick port
-	
 	public static Joystick driveStick;
-	public static Button driveStickButton1;
-	public static Button driveStickButton2;
-	public static Button driveStickButton3;
+	
+	public static final int kExtendArmButtonNumber = 7;
+	public static final int kCancelExtendArmButtonNumber = 8;
+	public static final int kRetractArmButtonNumber = 9;
+	public static final int kCancelRetractArmButtonNumber = 10;
+	public static final int kToggleArmButtonNumber = 11;
+		
+	public static Button extendArmButton;
+	public static Button cancelExtendArmButton;
+	public static Button retractArmButton;
+	public static Button cancelRetractArmButton;
+	public static Button toggleArmButton;
 
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
@@ -50,16 +58,20 @@ public class OI {
 	
 	public OI() {
 		OI.driveStick = new Joystick(kDriveStickPort);
-		
+				
 		Command extendArm = new ExtendArm();
-		Command retractArm = new RetractArm();
+		OI.extendArmButton = new JoystickButton(OI.driveStick,kExtendArmButtonNumber);
+		OI.extendArmButton.whenPressed(extendArm);
+		OI.cancelExtendArmButton = new JoystickButton(OI.driveStick,kCancelExtendArmButtonNumber);
+		OI.cancelExtendArmButton.cancelWhenPressed(extendArm);
 		
-		OI.driveStickButton1 = new JoystickButton(OI.driveStick,7);
-		OI.driveStickButton1.whenPressed(extendArm);
-		OI.driveStickButton2 = new JoystickButton(OI.driveStick,9);
-		OI.driveStickButton2.cancelWhenPressed(extendArm);
-		driveStickButton3 = new JoystickButton(OI.driveStick,11);
-		driveStickButton3.toggleWhenPressed(retractArm);
+		Command retractArm = new RetractArm();
+		OI.retractArmButton = new JoystickButton(OI.driveStick,kRetractArmButtonNumber);
+		OI.retractArmButton.whenPressed(retractArm);
+		OI.cancelRetractArmButton = new JoystickButton(OI.driveStick,kCancelRetractArmButtonNumber);
+		OI.cancelRetractArmButton.cancelWhenPressed(extendArm);
+		OI.toggleArmButton = new JoystickButton(OI.driveStick,kToggleArmButtonNumber);
+		OI.toggleArmButton.toggleWhenPressed(retractArm);
 	}
 
 }

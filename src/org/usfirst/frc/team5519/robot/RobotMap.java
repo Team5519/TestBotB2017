@@ -32,8 +32,8 @@ public class RobotMap {
 	
 	// GSN 11/18/2016
 	// Input ports and sensors.
-	public static final int kOuterArmLimitPort = 1;		// Need to find and set correct port
-	public static final int kInnerArmLimitPort = 2;		// Need to find and set correct port
+	public static final int kOuterArmLimitPort = 0;		// Need to find and set correct port
+	public static final int kInnerArmLimitPort = 1;		// Need to find and set correct port
 
 	public static DigitalInput outerArmLimitSwitch;
 	public static DigitalInput innerArmLimitSwitch;
