@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5519.robot;
 
 import org.usfirst.frc.team5519.commands.ExtendArm;
+import org.usfirst.frc.team5519.commands.GrabImage;
 import org.usfirst.frc.team5519.commands.RetractArm;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -35,6 +36,9 @@ public class OI {
 	public static Button retractArmButton;
 	public static Button cancelRetractArmButton;
 	public static Button toggleArmButton;
+	
+	public static final int kGrabImageButtonNumber = 12;
+	public static Button grabImageButton;
 
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
@@ -72,6 +76,11 @@ public class OI {
 		OI.cancelRetractArmButton.cancelWhenPressed(extendArm);
 		OI.toggleArmButton = new JoystickButton(OI.driveStick,kToggleArmButtonNumber);
 		OI.toggleArmButton.toggleWhenPressed(retractArm);
+		
+		Command grabImage = new GrabImage();
+		OI.grabImageButton = new JoystickButton(OI.driveStick,kGrabImageButtonNumber);
+		OI.grabImageButton.whenPressed(grabImage);
+
 	}
 
 }

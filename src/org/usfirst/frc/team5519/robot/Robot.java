@@ -1,8 +1,10 @@
 
 package org.usfirst.frc.team5519.robot;
 
+import org.usfirst.frc.team5519.subsystems.CameraVision;
 import org.usfirst.frc.team5519.subsystems.SimpleArm;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
@@ -37,6 +39,10 @@ public class Robot extends IterativeRobot {
     public static TeleopStation teleopStation;
     //public static Joystick driveStick;
     private int driveCount;
+    
+	//  GSN - 12/03/2016
+	// 
+    public static CameraVision cameraVision;
 
 	
     /**
@@ -54,6 +60,7 @@ public class Robot extends IterativeRobot {
     	
         // GSN - 11/12/2016
         arm = new SimpleArm();
+        arm.initHardware();
 
         oi = new OI();
         
@@ -61,6 +68,10 @@ public class Robot extends IterativeRobot {
         teleopStation = new TeleopStationOneStick();
         //driveStick = teleopStation.getDriveStick();
         driveCount = 0;
+        
+        //  GSN - 12/03/2016
+        cameraVision = new CameraVision();
+        cameraVision.init();
         
     }
     
@@ -105,6 +116,10 @@ public class Robot extends IterativeRobot {
     	driveBase.Drive(OI.driveStick);
     	
     	Scheduler.getInstance().run();
+    	
+    	//  GSN - 12/03/2016
+    	//CameraServer.getInstance().startAutomaticCapture();
+    	cameraVision.sendImage();
     	
     }
     
