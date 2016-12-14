@@ -73,13 +73,13 @@ public class OI {
 		OI.retractArmButton = new JoystickButton(OI.driveStick,kRetractArmButtonNumber);
 		OI.retractArmButton.whenPressed(retractArm);
 		OI.cancelRetractArmButton = new JoystickButton(OI.driveStick,kCancelRetractArmButtonNumber);
-		OI.cancelRetractArmButton.cancelWhenPressed(extendArm);
+		OI.cancelRetractArmButton.cancelWhenPressed(retractArm);
 		OI.toggleArmButton = new JoystickButton(OI.driveStick,kToggleArmButtonNumber);
 		OI.toggleArmButton.toggleWhenPressed(retractArm);
 		
-		Command grabImage = new GrabImage();
-		OI.grabImageButton = new JoystickButton(OI.driveStick,kGrabImageButtonNumber);
-		OI.grabImageButton.whenPressed(grabImage);
+		//Command grabImage = new GrabImage();
+		//OI.grabImageButton = new JoystickButton(OI.driveStick,kGrabImageButtonNumber);
+		//OI.grabImageButton.whenPressed(grabImage);
 
 	}
 

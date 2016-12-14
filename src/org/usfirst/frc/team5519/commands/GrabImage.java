@@ -11,8 +11,8 @@ public class GrabImage extends Command {
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		isFinished = false;
 		requires(Robot.cameraVision);
+		isFinished = false;
 	}
 
 	@Override

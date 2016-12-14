@@ -62,16 +62,17 @@ public class Robot extends IterativeRobot {
         arm = new SimpleArm();
         arm.initHardware();
 
+        
+        //  GSN - 12/03/2016
+        //cameraVision = new CameraVision();
+        //cameraVision.init();
+
         oi = new OI();
         
         driveBase = new DriveBaseTwoMotor();
         teleopStation = new TeleopStationOneStick();
         //driveStick = teleopStation.getDriveStick();
         driveCount = 0;
-        
-        //  GSN - 12/03/2016
-        cameraVision = new CameraVision();
-        cameraVision.init();
         
     }
     
@@ -119,7 +120,7 @@ public class Robot extends IterativeRobot {
     	
     	//  GSN - 12/03/2016
     	//CameraServer.getInstance().startAutomaticCapture();
-    	cameraVision.sendImage();
+    	//cameraVision.sendImage();
     	
     }
     
