@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5519.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 
 /**
@@ -23,11 +24,15 @@ public class RobotMap {
 	// GSN 11/18/2016
 	// Output ports and controllers.
 	public static final int kFrontLeftMotorPort = 1;	// Need to find and set correct port
-	public static final int kFrontRightMotorPort = 2;	// Need to find and set correct port
+	public static final int kRearLeftMotorPort = 2;		// Need to find and set correct port
+	public static final int kFrontRightMotorPort = 3;	// Need to find and set correct port
+	public static final int kRearRightMotorPort = 4;	// Need to find and set correct port
 	public static final int kArmMotorPort = 5;			// Need to find and set correct port
 	
-	public static Victor frontLeftMotor;
-	public static Victor frontRightMotor;
+	public static Talon frontLeftMotor;
+	public static Talon rearLeftMotor;
+	public static Talon frontRightMotor;
+	public static Talon rearRightMotor;
 	public static Victor armMotor;
 	
 	// GSN 11/18/2016
@@ -39,8 +44,10 @@ public class RobotMap {
 	public static DigitalInput innerArmLimitSwitch;
 	
 	static void init() {
-		frontLeftMotor = new Victor(kFrontLeftMotorPort);
-		frontRightMotor = new Victor(kFrontRightMotorPort);
+		frontLeftMotor = new Talon(kFrontLeftMotorPort);
+		rearLeftMotor = new Talon(kRearLeftMotorPort);
+		frontRightMotor = new Talon(kFrontRightMotorPort);
+		rearRightMotor = new Talon(kRearRightMotorPort);
 		armMotor = new Victor(kArmMotorPort);
 		
 		outerArmLimitSwitch = new DigitalInput(kOuterArmLimitPort);
