@@ -119,8 +119,8 @@ public class Robot extends IterativeRobot {
     	Scheduler.getInstance().run();
     	
     	//  GSN - 12/03/2016
-    	//CameraServer.getInstance().startAutomaticCapture();
-    	//cameraVision.sendImage();
+    	CameraServer.getInstance().startAutomaticCapture();
+    	cameraVision.sendImage();
     	
     }
     
